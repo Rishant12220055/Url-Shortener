@@ -8,10 +8,6 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "bcrypt": "^6.0.0",
-=======
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -20,10 +16,6 @@
     "mongoose": "^7.6.3"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "nodemon": "^3.0.1"
-=======
     "nodemon": "^3.1.10"
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
   }
 }
