@@ -15,7 +15,6 @@ const urlSchema = new mongoose.Schema(
         type: Number, 
         default: 0 
     },
-<<<<<<< HEAD
     // we now need to pass in the user id to the url model
     userId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -40,16 +39,10 @@ const urlSchema = new mongoose.Schema(
         type: Boolean,
         default: true
     }
-=======
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
 }, 
 {
     timestamps: true
 }
 );
 
-<<<<<<< HEAD
 export default mongoose.model('Url', urlSchema); 
-=======
-export default mongoose.model('Url', urlSchema); 
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7

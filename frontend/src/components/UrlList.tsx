@@ -8,17 +8,13 @@ interface Url {
   shortUrl: string;
   clicks: number;
   createdAt: string;
-<<<<<<< HEAD
   isPasswordProtected: boolean;
   isActive: boolean;
   passwordAttempts: number;
-=======
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
 }
 
 interface UrlListProps {
   urls: Url[];
-<<<<<<< HEAD
   onUrlsChange: () => void;
 }
 
@@ -31,17 +27,6 @@ export default function UrlList({ urls, onUrlsChange }: UrlListProps) {
   const copyToClipboard = async (url: string) => {
     try {
       await navigator.clipboard.writeText(`${process.env.BACKEND_URL}/${url}`);
-=======
-}
-
-export default function UrlList({ urls }: UrlListProps) {
-  const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
-  const [qrModalUrl, setQrModalUrl] = useState<string | null>(null);
-
-  const copyToClipboard = async (url: string) => {
-    try {
-      await navigator.clipboard.writeText(`http://localhost:5000/${url}`);
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
       setCopiedUrl(url);
       setTimeout(() => setCopiedUrl(null), 2000);
     } catch (error) {
@@ -65,7 +50,6 @@ export default function UrlList({ urls }: UrlListProps) {
     });
   };
 
-<<<<<<< HEAD
   const toggleUrlStatus = async (urlId: string) => {
     setTogglingUrls(prev => new Set(prev).add(urlId));
     
@@ -126,8 +110,6 @@ export default function UrlList({ urls }: UrlListProps) {
     }
   };
 
-=======
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
   return (
     <div className="url-list">
       <div className="list-header">
@@ -165,7 +147,6 @@ export default function UrlList({ urls }: UrlListProps) {
         ) : (
           <div className="urls-grid">
             {urls.map((url) => (
-<<<<<<< HEAD
               <div key={url._id} className={`url-card ${!url.isActive ? 'disabled' : ''}`}>
                 <div className="url-header">
                   <div className="url-info">
@@ -318,91 +299,6 @@ export default function UrlList({ urls }: UrlListProps) {
                         )}
                       </button>
                     )}
-=======
-              <div key={url._id} className="url-card">
-                <div className="url-header">
-                  <div className="url-info">
-                                         <div className="original-url">
-                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                         <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                         <line x1="9" y1="9" x2="9.01" y2="9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                         <line x1="15" y1="9" x2="15.01" y2="9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                       </svg>
-                       <span className="url-domain">{formatUrl(url.originalUrl)}</span>
-                     </div>
-                    <div className="url-meta">
-                      <span className="url-date">{formatDate(url.createdAt)}</span>
-                    </div>
-                  </div>
-                  <div className="url-stats">
-                                         <div className="click-count">
-                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                         <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
-                       </svg>
-                       <span>{url.clicks} clicks</span>
-                     </div>
-                  </div>
-                </div>
-                
-                <div className="short-url-section">
-                  <div className="short-url-container">
-                                         <a 
-                       href={`http://localhost:5000/${url.shortUrl}`} 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       className="short-url-link"
-                     >
-                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                         <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                       </svg>
-                       localhost:5000/{url.shortUrl}
-                     </a>
-                    <div className="short-url-actions">
-                      <button 
-                        onClick={() => copyToClipboard(url.shortUrl)}
-                        className={`copy-btn ${copiedUrl === url.shortUrl ? 'copied' : ''}`}
-                        title="Copy to clipboard"
-                      >
-                                               {copiedUrl === url.shortUrl ? (
-                           <>
-                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                               <polyline points="20,6 9,17 4,12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                             </svg>
-                             Copied!
-                           </>
-                         ) : (
-                           <>
-                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                               <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
-                               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" strokeWidth="2"/>
-                             </svg>
-                             Copy
-                           </>
-                         )}
-                      </button>
-                      <button 
-                        onClick={() => setQrModalUrl(`http://localhost:5000/${url.shortUrl}`)}
-                        className="qr-btn"
-                        title="Generate QR Code"
-                      >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect x="3" y="3" width="5" height="5" stroke="currentColor" strokeWidth="2"/>
-                          <rect x="3" y="16" width="5" height="5" stroke="currentColor" strokeWidth="2"/>
-                          <rect x="16" y="3" width="5" height="5" stroke="currentColor" strokeWidth="2"/>
-                          <rect x="11" y="11" width="2" height="2" fill="currentColor"/>
-                          <rect x="13" y="13" width="2" height="2" fill="currentColor"/>
-                          <rect x="11" y="15" width="2" height="2" fill="currentColor"/>
-                          <rect x="15" y="11" width="2" height="2" fill="currentColor"/>
-                          <rect x="17" y="13" width="2" height="2" fill="currentColor"/>
-                          <rect x="13" y="17" width="2" height="2" fill="currentColor"/>
-                          <rect x="17" y="17" width="2" height="2" fill="currentColor"/>
-                        </svg>
-                      </button>
-                    </div>
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
                   </div>
                 </div>
               </div>

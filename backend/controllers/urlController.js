@@ -1,6 +1,5 @@
 import Url from '../models/Url.js';
 import { generateShortUrl } from '../utils/generateShortUrl.js';
-<<<<<<< HEAD
 import bcrypt from 'bcrypt';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -11,19 +10,12 @@ const __dirname = path.dirname(__filename);
 export const shortenUrl = async (req, res) => {
   try {
     const { originalUrl, password } = req.body;
-=======
-
-export const shortenUrl = async (req, res) => {
-  try {
-    const { originalUrl } = req.body;
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
     
     if (!originalUrl) {
       return res.status(400).json({ error: 'URL is required' });
     }
     
     const shortUrl = generateShortUrl();
-<<<<<<< HEAD
     
     // Create URL object with password protection if password is provided
     const urlData = { 
@@ -52,15 +44,6 @@ export const shortenUrl = async (req, res) => {
       shortUrl: `${baseUrl}/${shortUrl}`,
       id: url._id,
       isPasswordProtected: url.isPasswordProtected
-=======
-    const url = new Url({ originalUrl, shortUrl });
-    await url.save();
-
-    res.json({
-      originalUrl,
-      shortUrl: `http://localhost:${process.env.PORT || 5000}/${shortUrl}`,
-      id: url._id
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
     });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -69,20 +52,15 @@ export const shortenUrl = async (req, res) => {
 
 export const getAllUrls = async (req, res) => {
   try {
-<<<<<<< HEAD
     const urls = await Url.find({ userId: req.user._id })
       .select('-password') // Don't return password in the response
       .sort({ createdAt: -1 });
-=======
-    const urls = await Url.find({});
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
     res.json(urls);
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }
 };
 
-<<<<<<< HEAD
 export const verifyPassword = async (req, res) => {
   try {
     const { shortUrl, password } = req.body;
@@ -195,8 +173,6 @@ export const resetPasswordAttempts = async (req, res) => {
   }
 };
 
-=======
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
 export const redirectUrl = async (req, res) => {
   try {
     const url = await Url.findOne({ shortUrl: req.params.shortUrl });
@@ -205,7 +181,6 @@ export const redirectUrl = async (req, res) => {
       return res.status(404).json({ error: 'URL not found' });
     }
 
-<<<<<<< HEAD
     // Check if URL is active
     if (!url.isActive) {
       return res.status(403).json({ error: 'This link has been disabled' });
@@ -218,8 +193,6 @@ export const redirectUrl = async (req, res) => {
     }
 
     // If not password protected, proceed with normal redirect
-=======
->>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
     url.clicks++;
     await url.save();
 
