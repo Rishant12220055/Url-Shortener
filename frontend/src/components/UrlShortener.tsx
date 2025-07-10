@@ -11,8 +11,11 @@ interface UrlShortenerProps {
 export default function UrlShortener({ onUrlShortened, isLoading, setIsLoading, token }: UrlShortenerProps) {
   const [originalUrl, setOriginalUrl] = useState('');
   const [recentlyShortened, setRecentlyShortened] = useState<string | null>(null);
+<<<<<<< HEAD
   const [isPasswordProtected, setIsPasswordProtected] = useState(false);
   const [password, setPassword] = useState('');
+=======
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +25,7 @@ export default function UrlShortener({ onUrlShortened, isLoading, setIsLoading, 
     setRecentlyShortened(null);
 
     try {
+<<<<<<< HEAD
       const requestBody: { originalUrl: string; password?: string } = { originalUrl };
       
       // Add password if protection is enabled
@@ -30,19 +34,29 @@ export default function UrlShortener({ onUrlShortened, isLoading, setIsLoading, 
       }
 
       const response = await fetch(`${process.env.BACKEND_URL}/api/shorten`, {
+=======
+      const response = await fetch('http://localhost:5000/api/shorten', {
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
+<<<<<<< HEAD
         body: JSON.stringify(requestBody),
+=======
+        body: JSON.stringify({ originalUrl }),
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
       });
 
       if (response.ok) {
         const data = await response.json();
         setOriginalUrl('');
+<<<<<<< HEAD
         setPassword('');
         setIsPasswordProtected(false);
+=======
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
         setRecentlyShortened(data.shortUrl);
         onUrlShortened();
         
@@ -100,6 +114,7 @@ export default function UrlShortener({ onUrlShortened, isLoading, setIsLoading, 
             </button>
           </div>
         </div>
+<<<<<<< HEAD
 
         {/* Password Protection Section */}
         <div className="password-section">
@@ -143,6 +158,8 @@ export default function UrlShortener({ onUrlShortened, isLoading, setIsLoading, 
             </div>
           )}
         </div>
+=======
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
       </form>
       
       {recentlyShortened && (

@@ -146,6 +146,7 @@
   to { transform: rotate(360deg); }
 }
 
+<<<<<<< HEAD
 /* Password Protection Styles */
 .password-section {
   margin-top: 24px;
@@ -283,6 +284,8 @@
   flex-shrink: 0;
 }
 
+=======
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
 .success-message {
   margin-top: 32px;
   background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);

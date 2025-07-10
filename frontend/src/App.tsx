@@ -12,9 +12,12 @@ interface Url {
   shortUrl: string;
   clicks: number;
   createdAt: string;
+<<<<<<< HEAD
   isPasswordProtected: boolean;
   isActive: boolean;
   passwordAttempts: number;
+=======
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
 }
 
 interface User {
@@ -54,7 +57,11 @@ function App() {
     if (!token) return
     
     try {
+<<<<<<< HEAD
       const response = await fetch(`${process.env.BACKEND_URL}/api/urls`, {
+=======
+      const response = await fetch('http://localhost:5000/api/urls', {
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -71,7 +78,11 @@ function App() {
     setAuthError('')
 
     try {
+<<<<<<< HEAD
       const response = await fetch(`${process.env.BACKEND_URL}/api/auth/${mode}`, {
+=======
+      const response = await fetch(`http://localhost:5000/api/auth/${mode}`, {
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -125,7 +136,11 @@ function App() {
           
           <Analytics urls={urls} />
           
+<<<<<<< HEAD
           <UrlList urls={urls} onUrlsChange={fetchUrls} />
+=======
+          <UrlList urls={urls} />
+>>>>>>> 1a3d51950d71267b8229518fd13f95e1980e06d7
         </div>
       </div>
     </div>
